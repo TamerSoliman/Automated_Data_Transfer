@@ -19,7 +19,7 @@
 19. 
 20. if __name__ == '__main__':
 21. 	observer = Observer()
-22. 	path = "C:/Users/tamer/to_lx"
+22. 	path = "C:/Users/tamer/sender"
 23. 	observer.schedule(watch_and_trigger(),path)
 24. 	observer.start()
 25. 

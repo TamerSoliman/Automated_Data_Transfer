@@ -6,19 +6,19 @@
 6. 	"""
 7. 	import os, glob
 8. 	from definitions import pretransfer_check
-9. 	os.chdir("C:/Users/tamer/to_lx")
+9. 	os.chdir("C:/Users/tamer/sender")
 10. 	files=glob("*.csv")
 11. 
 12. 	if len(files) < 8:
 13. 		subj = body = None
 14. 	elif len(files) > 8:
 15. 		subj= ("Experiment 4: Transfer Problem;"
-16. 			"excess files dumped into the windows folder")
+16. 			"excess files dumped into the sender folder")
 17. 		body ="Here are the files {0} {1}".format(
 18. 			"\n", "\n".join(files))
 19. 	elif not pretransfer_check():
 20. 		subj=("Experiment 4: Transfer Problem;"
-21. 			" redundent or misnamed files found in the Windows folder")
+21. 			" redundent or misnamed files found in the sender folder")
 22. 		body ="Here are the files {0} {1}".format(
 23. 			"\n", "\n".join(files))
 24. 	else:
@@ -40,25 +40,25 @@
 40. 	"""
 41. 		checks for csv leftovers from previous analysis or current 		file transfer & returns relevant subject line and body of a 			notification 		email
 42. 	"""
-43. 	lx_leftovers = list(set(after) - set(files))
-44. 	win_leftovers = list(set(files) - set(after))
-45. 	win_problem = ("Here are the csv's that "
+43. 	recipient_leftovers = list(set(after) - set(files))
+44. 	sender_leftovers = list(set(files) - set(after))
+45. 	sender_problem = ("Here are the csv's that "
 46. 				"failed to transfer{0} {1}").format(
-47. 				"\n", "\n".join(win_leftovers))
-48. 	lx_problem=("Here are the leftover csv's"
+47. 				"\n", "\n".join(sender_leftovers))
+48. 	recipient_problem=("Here are the leftover csv's"
 49. 			" from previous analyses{0} {1}").format(
-50. 			"\n", "\n".join(lx_leftovers))
-51. 	if (len(lx_leftovers)   !=0) & (len(win_leftovers) !=0):
+50. 			"\n", "\n".join(recipient_leftovers))
+51. 	if (len(recipient_leftovers)   !=0) & (len(sender_leftovers) !=0):
 52. 		subj = ("Experiment4: Transfer Problems;"
-53. 			" Lx and Win leftovers found!")
-54. 		body=win_problem+"\n"+lx_problem
-55. 	elif len(lx_leftovers)   !=0:
-56. 		subj = "Experiment4: Transfer Problems; Lx  leftovers found!"
-57. 		body=lx_problem
-58. 	elif len(win_leftovers)   !=0:
+53. 			" sender and recipient  leftovers found!")
+54. 		body=sender_problem+"\n"+recipient_problem
+55. 	elif len(recipient_leftovers)   !=0:
+56. 		subj = "Experiment4: Transfer Problems; recipient   leftovers found!"
+57. 		body=recipient_problem
+58. 	elif len(sender_leftovers)   !=0:
 59. 		subj = ("Experiment4: Transfer Problems;"
 60. 			" CSV's failed to transfer!")
-61. 		body=win_problem
+61. 		body=sender_problem
 62. 	else:
 63. 		[os.remove(file) for file in files]
 64. 		subj= body = None
@@ -93,7 +93,7 @@
 93. 	cnopts.hostkeys = None 
 94. 	with pysftp.Connection(host="xxx.x.x.x", port=xxxx, 				username="USERNAME", password="PASSWORD", 
 95. 		cnopts=cnopts) as con:
-96. 		con.chdir("/home/tamer/from_win")
+96. 		con.chdir("/home/tamer/recipient")
 97. 		[con.put(file) for file in files]
 98. 		after =[f for f in con.listdir() if f.endswith("csv")]
 99. 		subj, body = posttransfer_check(files, after)
