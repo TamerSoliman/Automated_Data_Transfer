@@ -33,3 +33,10 @@ Otherwise, it does two things. First, it triggers the post-transfer operations o
 	4.8.    Finally, the dummy file I use to trigger the post-transfer file processing is named "success.txt." You can change it on Line 101.
 5.    Open the script `watch_and_trigger.py` with your editor and repeat steps 4.1 & 4.3 above (lines9,12, and 22). Save and close the script.
 6.    That's it! Now run the `watch_and_trigger.py`  script in its current directory.
+
+
+	#Whom Should You Blame?
+
+Well, No one but yourself! I offer no warrantee, implied or explicit, for the code in any of my repositories. Use it at your own risk and discretion. I accept no liability, whatsoever, as a result of using it, or using a modified version of it!
+
+Tamer Soliman, the author of this repository, has been immersed in data collection and statistical modeling since 2002. He holds a PhD in quantitative Experimental Psychology, where he designs experiments to understand and model human cognition, decision making, socio-cultural behavior, attitudes, and actions. He develops data-centered utilities and applications that subserve his data-science and machine-learning projects. While he approaches his projects with the mindset of a skeptic homo-academicus,  he understands the concept of "deadlines", and loves making money just as all other homo-sapiens!
